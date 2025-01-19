@@ -1,0 +1,25 @@
+<h1>Soy el Padre</h1>
+<button (click)="enviarMensaje()">Enviar Mensaje a los Hijos</button>
+
+<!-- MUESTRA LOS MENSAJES RECIBIDOS DE LOS HIJOS -->
+<div *ngIf="mensajeDeHijo1">
+  <p>Hijo 1 dice: {{ mensajeDeHijo1 }}</p>
+</div>
+<div *ngIf="mensajeDeHijo2">
+  <p>Hijo 2 dice: {{ mensajeDeHijo2 }}</p>
+</div>
+
+<!-- MUESTRA EL MENSAJE QUE EL PADRE ENVÍA -->
+<p *ngIf="mensajeParaHijos">Mensaje enviado a los hijos: {{ mensajeParaHijos }}</p>
+
+<!-- ENVÍA MENSAJE AL HIJO 1 Y RECIBE SU RESPUESTA -->
+<app-hijo1 
+  [mensajeDelPadre]="mensajeParaHijos" 
+  (mensajeAlPadre)="recibirMensajeHijo1($event)">
+</app-hijo1>
+
+<!-- ENVÍA MENSAJE AL HIJO 2 Y RECIBE SU RESPUESTA -->
+<app-hijo2 
+  [mensajeDelPadre]="mensajeParaHijos" 
+  (mensajeAlPadre)="recibirMensajeHijo2($event)">
+</app-hijo2>
