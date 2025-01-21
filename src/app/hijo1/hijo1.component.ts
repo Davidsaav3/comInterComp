@@ -7,36 +7,36 @@ import { CommonModule } from '@angular/common';
   selector: 'app-hijo1',
   templateUrl: './hijo1.component.html',
   styleUrls: ['./hijo1.component.css'],
-  imports: [CommonModule]  // Asegura que CommonModule esté importado
+  imports: [CommonModule]  // ASEGURA QUE CommonModule ESTÉ IMPORTADO
 })
 export class Hijo1Component implements OnInit, OnDestroy {
 
-  soy = 'hijo1';
-  componentes = ['hijo1', 'hijo2', 'padre'];
-  ultimoMensaje = '';
-  private subscription: Subscription | null = null;  // Inicializamos en null
+  soy = 'hijo1';  // IDENTIFICA EL COMPONENTE ACTUAL
+  componentes = ['hijo1', 'hijo2', 'padre'];  // LISTA DE COMPONENTES PARA COMUNICACIÓN
+  ultimoMensaje = '';  // ALMACENA EL ÚLTIMO MENSAJE RECIBIDO
+  private subscription: Subscription | null = null;  // INICIALIZAMOS EN NULL PARA LA SUSCRIPCIÓN
 
-  constructor(private controlEventosService: ControlEventosService) { }
+  constructor(private controlEventosService: ControlEventosService) { }  // INYECCIÓN DE DEPENDENCIA
 
   ngOnInit(): void {
     this.subscription = this.controlEventosService.eventEmitterFunction.subscribe(
       res => {
-        const obj = JSON.parse(res);
-        if (obj.destinatario === this.soy) {
-          console.log('Soy ' + this.soy + ' y he recibido: ' + obj.mensaje);
-          this.ultimoMensaje = obj.mensaje;
+        const obj = JSON.parse(res);  // PARSEA EL MENSAJE EN FORMATO JSON
+        if (obj.destinatario === this.soy) {  // VERIFICA SI EL MENSAJE ES PARA ESTE COMPONENTE
+          console.log('Soy ' + this.soy + ' y he recibido: ' + obj.mensaje);  // MUESTRA EL MENSAJE EN CONSOLA
+          this.ultimoMensaje = obj.mensaje;  // ACTUALIZA EL MENSAJE RECIBIDO
         }
       }
     );
   }
 
   emitir(mensaje: string, destinatario: string) {
-    this.controlEventosService.emitir(mensaje, destinatario);
+    this.controlEventosService.emitir(mensaje, destinatario);  // EMITE UN MENSAJE A OTRO COMPONENTE
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.subscription) {  // VERIFICA SI EXISTE UNA SUSCRIPCIÓN ACTIVA
+      this.subscription.unsubscribe();  // CANCELA LA SUSCRIPCIÓN AL DESTRUIR COMPONENTE
     }
   }
 

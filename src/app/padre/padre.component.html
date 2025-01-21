@@ -1,7 +1,7 @@
 <div style="border: 1;border-color: black;border-style: solid; padding: 5px; margin: 5px;">
   <p>Soy {{soy}}</p>
-  <button *ngFor="let componente of componentes" (click)="emitir('Mensaje desde '+soy+' a '+componente,componente)">Enviar a {{componente}}</button>
-  <div>Ultimo mensaje: {{ultimoMensaje}}</div>
+  <button  *ngFor="let componente of componentes" (click)="emitir('Mensaje desde '+soy+' a '+componente,componente)">Enviar a {{componente}}</button>
+  <div style="margin-top: 5px;">Ultimo mensaje: {{ultimoMensaje}}</div>
 </div>
 <app-hijo1></app-hijo1>
 <app-hijo2></app-hijo2>
