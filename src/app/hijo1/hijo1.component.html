@@ -1,3 +1,5 @@
-<h2>Soy Hijo 1</h2>
-<p *ngIf="mensajeDelPadre">Mensaje del Padre: {{ mensajeDelPadre }}</p> <!-- MUESTRA MENSAJE DEL PADRE -->
-<button (click)="enviarMensaje()">Enviar Mensaje al Padre</button> <!-- ENVÍA MENSAJE AL PADRE -->
+<div style="border: 1;border-color: black;border-style: solid; padding: 5px; margin: 5px;">
+  <p>Soy {{soy}}</p>
+  <button *ngFor="let componente of componentes" (click)="emitir('Mensaje desde '+soy+' a '+componente,componente)">Enviar a {{componente}}</button>
+  <div>Ultimo mensaje: {{ultimoMensaje}}</div>
+</div>

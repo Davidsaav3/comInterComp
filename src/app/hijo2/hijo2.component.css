@@ -2,6 +2,7 @@ h2 {
   color: #dc3545;
 }
 button {
+  margin-left: 5px;
   background-color: #dc3545;
   color: white;
   border: none;

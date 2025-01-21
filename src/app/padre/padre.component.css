@@ -6,6 +6,7 @@ p {
   font-style: italic;
 }
 button {
+  margin-left: 5px;
   background-color: #007bff;
   color: white;
   border: none;
